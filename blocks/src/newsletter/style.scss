@@ -1,0 +1,87 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-eclerx-newsletter {
+	padding: 50px;
+
+	.eclerx-row {
+		display: flex;
+		justify-content: flex-start;
+		align-items: self-end;
+		width: 100%;
+	}
+
+	.eclerx-column-half {
+		width: 50%;
+	}
+
+	.eclerx-column-full {
+		width: 100%;
+	}
+
+	.eclerx-newsletter-input-wrapper {
+		padding: 0 10px;
+	}
+
+	button,
+	input {
+		width: 100%;
+		height: 50px;
+		font-size: 18px;
+		border-radius: 10px;
+		box-sizing: border-box;
+	}
+	input {
+		border: 1px solid #ffffff10;
+		background-color: #ffffff;
+		color: #2d2d2d;
+		padding: 0 10px;
+	}
+	button {
+		background-color: #2d2d2d;
+		color: #ffffff;
+		cursor: pointer;
+	}
+	.eclerx-newsletter-label {
+		padding: 10px;
+		width: max-content;
+	}
+	.eclerx-newsletter-info {
+		padding: 10px;
+		margin-top: 10px;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.eclerx-newsletter-info span {
+		color: #ffffff;
+		text-align: center;
+		padding: 10px 50px;
+		border-radius: 10px;
+	}
+	.eclerx-newsletter-info span[data-status="info"] {
+		background-color: #55555580;
+		border: 1px solid #555555;
+	}
+	.eclerx-newsletter-info span[data-status="success"] {
+		background-color: #1cc70680;
+		border: 1px solid #1cc706;
+	}
+	.eclerx-newsletter-info span[data-status="error"] {
+		background-color: #cf2c2c80;
+		border: 1px solid #cf2c2c;
+	}
+	
+	.eclerx-error {
+		color: #cf2c2c;
+		font-size: 12px;
+	}
+	.eclerx-safe {
+		display: none;
+	}
+}
