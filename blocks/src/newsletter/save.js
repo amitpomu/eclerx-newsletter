@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { InnerBlocks, useBlockProps } from "@wordpress/block-editor";
+import { InnerBlocks, useBlockProps, RichText } from "@wordpress/block-editor";
 
 /**
  * The save function defines the way in which the different attributes should
@@ -10,7 +10,8 @@ import { InnerBlocks, useBlockProps } from "@wordpress/block-editor";
  *
  * @return {Element} Element to render.
  */
-export default function save() {
+export default function save(props) {
+	const { attributes } = props;
 	return (
 		<div {...useBlockProps.save({ className: `eclerx-newsletter-block` })}>
 			<div className="eclerx-newsletter-wrapper">
@@ -18,60 +19,75 @@ export default function save() {
 					<InnerBlocks.Content />
 				</div>
 				<form id="eclerx-newsletter" noValidate>
-					<input type="text" name="safename" id="safename" value="" className="eclerx-safe" aria-hidden="true" />
+					<input
+						type="text"
+						name="safename"
+						id="safename"
+						value=""
+						className="eclerx-safe"
+						aria-hidden="true"
+					/>
 					<div className="eclerx-row">
 						<div className="eclerx-newsletter-input-wrapper eclerx-column-half">
-							<label htmlFor="firstname">{__("First Name", "eclerx")}</label>
 							<input
 								type="text"
 								id="firstname"
 								name="firstname"
-								placeholder={__("John", "eclerx")}
+								placeholder={__("Your Firstname", "eclerx")}
 								aria-describedby="firstname-error"
 								aria-invalid="false"
 								required
 							/>
-							<span id="firstname-error" className="eclerx-error" role="alert"></span>
+							<span
+								id="firstname-error"
+								className="eclerx-error"
+								role="alert"
+							></span>
 						</div>
 
 						<div className="eclerx-newsletter-input-wrapper eclerx-column-half">
-							<label htmlFor="surname">{__("Sur Name", "eclerx")}</label>
 							<input
 								type="text"
 								id="surname"
 								name="surname"
-								placeholder={__("Doe", "eclerx")}
+								placeholder={__("Your Surname", "eclerx")}
 								aria-describedby="surname-error"
 								aria-invalid="false"
 							/>
-							<span id="surname-error" className="eclerx-error" role="alert"></span>
+							<span
+								id="surname-error"
+								className="eclerx-error"
+								role="alert"
+							></span>
 						</div>
 					</div>
 
 					<div className="eclerx-row">
 						<div className="eclerx-newsletter-input-wrapper eclerx-column-half">
-							<label htmlFor="email">{__("Email", "eclerx")}</label>
 							<input
 								type="email"
 								id="email"
 								name="email"
-								placeholder="john.doe@example.com"
+								placeholder="Your Email"
 								aria-describedby="email-error"
 								aria-invalid="false"
 								required
 							/>
-							<span id="email-error" className="eclerx-error" role="alert"></span>
+							<span
+								id="email-error"
+								className="eclerx-error"
+								role="alert"
+							></span>
 						</div>
 
 						<div className="eclerx-newsletter-input-wrapper eclerx-column-half">
-							<button type="submit">
-								{__("Submit", "eclerx")}
-							</button>
+							<button type="submit">{__("Sign up", "eclerx")}</button>
 						</div>
 					</div>
 				</form>
 
 				<div className="eclerx-newsletter-info">
+					<RichText.Content className="eclerx-caption" tagName="span" value={attributes.caption} />
 					<span id="eclerx-info-message" data-status=""></span>
 				</div>
 			</div>

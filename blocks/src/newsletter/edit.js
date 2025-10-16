@@ -1,5 +1,9 @@
 import { __ } from "@wordpress/i18n";
-import { useInnerBlocksProps, useBlockProps } from "@wordpress/block-editor";
+import {
+	useInnerBlocksProps,
+	useBlockProps,
+	RichText,
+} from "@wordpress/block-editor";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -9,13 +13,14 @@ import { useInnerBlocksProps, useBlockProps } from "@wordpress/block-editor";
  *
  * @return {Element} Element to render.
  */
-export default function Edit() {
+export default function Edit(props) {
+	const { attributes, setAttributes } = props;
 	const ALLOWED_BLOCKS = [];
 	const TEMPLATE = [
 		[
 			"core/heading",
 			{
-				content: __("Subscribe to Our Newsletter", "eclerx"),
+				content: __("Sign up to the Penguin Newsletter", "eclerx"),
 				level: 3,
 				style: {
 					spacing: {
@@ -31,7 +36,7 @@ export default function Edit() {
 			"core/paragraph",
 			{
 				content: __(
-					"Keep in touch with our latest projects, announcements, and valuable insights.",
+					"For the latest books, recommendations, author interviews and more",
 					"eclerx",
 				),
 			},
@@ -52,23 +57,21 @@ export default function Edit() {
 				<form id="eclerx-newsletter">
 					<div className="eclerx-row">
 						<div className="eclerx-newsletter-input-wrapper eclerx-column-half">
-							<label htmlFor="firstname">{__("First Name", "eclerx")}</label>
 							<input
 								type="text"
 								id="firstname"
 								name="firstname"
-								value={__("John", "eclerx")}
+								value={__("Your Firstname", "eclerx")}
 								disabled
 							/>
 						</div>
 
 						<div className="eclerx-newsletter-input-wrapper eclerx-column-half">
-							<label htmlFor="firstname">{__("Sur Name", "eclerx")}</label>
 							<input
 								type="text"
 								id="surname"
 								name="surname"
-								value={__("Doe", "eclerx")}
+								value={__("Your Surname", "eclerx")}
 								disabled
 							/>
 						</div>
@@ -76,23 +79,31 @@ export default function Edit() {
 
 					<div className="eclerx-row">
 						<div className="eclerx-newsletter-input-wrapper eclerx-column-half">
-							<label htmlFor="email">{__("Email", "eclerx")}</label>
 							<input
 								type="email"
 								id="email"
 								name="email"
-								value="john.doe@example.com"
+								value="Your Email"
 								disabled
 							/>
 						</div>
 
 						<div className="eclerx-newsletter-input-wrapper eclerx-column-half">
 							<button type="submit" disabled>
-								{__("Submit", "eclerx")}
+								{__("Sign up", "eclerx")}
 							</button>
 						</div>
 					</div>
 				</form>
+				<div className="eclerx-newsletter-info">
+					<RichText
+						tagName="span"
+						className="eclerx-caption"
+						value={attributes.caption}
+						allowedFormats={["core/bold", "core/italic"]}
+						onChange={(caption) => setAttributes({ caption })}
+					/>
+				</div>
 			</div>
 		</div>
 	);
