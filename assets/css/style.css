@@ -1,0 +1,5 @@
+@media screen and (max-width: 781px) {
+	.eclerx-newsletter-pattern {
+        flex-direction: column-reverse;
+    }
+}

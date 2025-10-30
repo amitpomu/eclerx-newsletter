@@ -31,6 +31,7 @@ class Core
 
     public function register()
     {
+        include_once ECLERX_BASE_PATH . '/includes/pattern.php';
         include_once ECLERX_BASE_PATH . '/includes/routes.php';
     }
 
@@ -41,6 +42,9 @@ class Core
 
         //register blocks
         add_action('init', array($this, 'blocks_init'));
+        
+        //enqueue scripts
+        add_action('wp_enqueue_scripts', array($this, 'enqueue_script'));
 
         add_action('wp', function() {
             // check if the block exists 
@@ -51,10 +55,15 @@ class Core
         });
     }
 
+    public function enqueue_script() {
+        // Load style
+		wp_enqueue_style('eclerx-style', ECLERX_URL_PATH . 'assets/css/style.css');
+    }
+
     public function localize_api_data()
     {
-        // swiper slider js
-        wp_register_script('eclerx-api', ECLERX_URL_PATH . 'assets/api.js', '', '', true);
+        // api js
+        wp_register_script('eclerx-api', ECLERX_URL_PATH . 'assets/js/api.js', '', '', true);
 
         wp_localize_script('eclerx-api', 'eclerx_api_data', [
             'root' => esc_url(rest_url('eclerx/v1/registeruser')),
@@ -98,5 +107,5 @@ class Core
 
 }
 
-// Initialize plugin
+// Initialize
 Core::get_instance();

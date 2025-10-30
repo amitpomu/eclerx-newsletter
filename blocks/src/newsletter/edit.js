@@ -28,6 +28,12 @@ export default function Edit(props) {
 							top: "0",
 							bottom: "0",
 						},
+						typography: {
+							fontWeight: '600',
+							fontSize: '42px',
+							lineHeight: '1.3',
+							letterSpacing: '2',
+						},
 					},
 				},
 			},
@@ -53,7 +59,9 @@ export default function Edit(props) {
 	return (
 		<div {...innerBlocksProps}>
 			<div className="eclerx-newsletter-wrapper">
-				<div className="eclerx-newsletter-label">{children}</div>
+				<div className="eclerx-newsletter-label">
+					{children}
+				</div>
 				<form id="eclerx-newsletter">
 					<div className="eclerx-row">
 						<div className="eclerx-newsletter-input-wrapper eclerx-column-half">
@@ -100,7 +108,7 @@ export default function Edit(props) {
 						tagName="span"
 						className="eclerx-caption"
 						value={attributes.caption}
-						allowedFormats={["core/bold", "core/italic"]}
+						allowedFormats={["core/bold", "core/italic", "core/link"]}
 						onChange={(caption) => setAttributes({ caption })}
 					/>
 				</div>

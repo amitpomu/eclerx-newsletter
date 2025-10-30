@@ -43,7 +43,7 @@
 		"caption": {
 			"type": "string",
 			"source": "html",
-            "selector": "span",
+            "selector": ".eclerx-caption",
 			"default": "By signing up, I confirm that I'm over 16. To find out what personal data we collect and how we use it, please visit our Privacy Policy"
 		}
 	},

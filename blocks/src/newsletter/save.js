@@ -12,8 +12,12 @@ import { InnerBlocks, useBlockProps, RichText } from "@wordpress/block-editor";
  */
 export default function save(props) {
 	const { attributes } = props;
+	const blockProps = useBlockProps.save({
+		className: `eclerx-newsletter-block`,
+	});
+
 	return (
-		<div {...useBlockProps.save({ className: `eclerx-newsletter-block` })}>
+		<div {...blockProps}>
 			<div className="eclerx-newsletter-wrapper">
 				<div className="eclerx-newsletter-label">
 					<InnerBlocks.Content />
@@ -68,7 +72,7 @@ export default function save(props) {
 								type="email"
 								id="email"
 								name="email"
-								placeholder="Your Email"
+								placeholder={__("Your Email", "eclerx")}
 								aria-describedby="email-error"
 								aria-invalid="false"
 								required
@@ -87,7 +91,13 @@ export default function save(props) {
 				</form>
 
 				<div className="eclerx-newsletter-info">
-					<RichText.Content className="eclerx-caption" tagName="span" value={attributes.caption} />
+					{attributes.caption && (
+						<RichText.Content
+							className="eclerx-caption"
+							tagName="span"
+							value={attributes.caption}
+						/>
+					)}
 					<span id="eclerx-info-message" data-status=""></span>
 				</div>
 			</div>

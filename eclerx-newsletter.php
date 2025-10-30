@@ -3,7 +3,7 @@
  * Plugin Name:       Eclerx Newsletter
  * Plugin URI:        localhost
  * Description:       This block allows you to create subscribtion form for latest news in single post/page.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Tested up to: 	  6.8
  * Requires PHP:      7.4
  * Author:            amitpomu
