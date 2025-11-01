@@ -31,7 +31,7 @@ class Core
 
     public function register()
     {
-        include_once ECLERX_BASE_PATH . '/includes/pattern.php';
+        // include_once ECLERX_BASE_PATH . '/includes/pattern.php';
         include_once ECLERX_BASE_PATH . '/includes/routes.php';
     }
 
@@ -48,7 +48,7 @@ class Core
 
         add_action('wp', function() {
             // check if the block exists 
-            if ((is_singular() && has_block('eclerx/newsletter', get_post()))) {
+            if ((is_singular() && (has_block('eclerx/newsletter', get_post()) || has_block('eclerx/newsletter-new', get_post())))) {
                 // enqueue scripts
                 add_action('wp_enqueue_scripts', array($this, 'localize_api_data'));
             }
@@ -92,7 +92,8 @@ class Core
     public static function get_blocks_names()
     {
         $blocks = array(
-            'newsletter',
+            // 'newsletter',
+            'newsletter-new',
         );
         return $blocks;
     }
@@ -104,7 +105,6 @@ class Core
             register_block_type(ECLERX_BASE_PATH . '/blocks/build/' . $block_name);
         }
     }
-
 }
 
 // Initialize

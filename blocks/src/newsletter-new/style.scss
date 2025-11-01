@@ -1,0 +1,217 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-eclerx-newsletter-new {
+	.eclerx-newsletter-wrapper {
+		display: flex;
+		flex-wrap: wrap-reverse;
+		align-items: center;
+		padding: 0 20px;
+		box-sizing: border-box;
+		gap: 32px;
+
+		.eclerx-column {
+			width: calc(50% - 16px);
+
+			.featured-image {
+				max-width: 100%;
+			}
+		}
+	}
+	.eclerx-row {
+		display: flex;
+		justify-content: flex-start;
+		align-items: flex-start;
+		width: 100%;
+		gap: 10px;
+		margin-bottom: 10px;
+	}
+
+	.eclerx-column-half {
+		width: 50%;
+	}
+
+	.eclerx-column-full {
+		width: 100%;
+	}
+
+	button,
+	input {
+		width: 100%;
+		height: 48px;
+		font-size: 16px;
+		border-radius: 10px;
+		box-sizing: border-box;
+		margin-top: 0;
+	}
+	input {
+		border: 1px solid #3b3b3b;
+		background-color: #ffffff;
+		color: #0b0c0c;
+		padding: 0 16px;
+		height: 48px;
+		font-size: 16px;
+		letter-spacing: 0;
+		font-weight: 400;
+		border-radius: 4px;
+	}
+	button {
+		background-color: #0b0c0c;
+		color: #ffffff;
+		cursor: pointer;
+		border-radius: 50px;
+		padding: 0 25px;
+		width: auto;
+		height: 48px;
+		font-weight: 700;
+		font-size: 16px;
+	}
+	.eclerx-newsletter-label {
+		h2 {
+			font-weight: 600;
+			font-size: 42px;
+			line-height: 54px;
+			letter-spacing: 0.02em;
+			margin: 0 0 43px 0;
+			color: #0b0c0c;
+		}
+		p {
+			font-weight: 700;
+			size: 18px;
+			line-height: 26px;
+			margin: 0 0 18px 0;
+			letter-spacing: 0;
+			color: #0b0c0c;
+		}
+	}
+	.eclerx-newsletter-info {
+		padding: 10px 0;
+		margin-top: 10px;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.eclerx-newsletter-info span.eclerx-caption {
+		font-size: 14px;
+		line-height: 20px;
+		margin-bottom: 28px;
+		letter-spacing: 0;
+		color: #0b0c0c;
+	}
+	.eclerx-newsletter-info span#eclerx-info-message {
+		color: #ffffff;
+		text-align: center;
+		border-radius: 10px;
+	}
+	.eclerx-newsletter-info span[data-status="info"] {
+		background-color: #55555580;
+		border: 1px solid #555555;
+		padding: 10px 50px;
+		margin-top: 10px;
+	}
+	.eclerx-newsletter-info span[data-status="success"] {
+		background-color: #1cc70680;
+		border: 1px solid #1cc706;
+		padding: 10px 50px;
+		margin-top: 10px;
+	}
+	.eclerx-newsletter-info span[data-status="error"] {
+		background-color: #cf2c2c80;
+		border: 1px solid #cf2c2c;
+		padding: 10px 50px;
+		margin-top: 10px;
+	}
+
+	.eclerx-error {
+		color: #cf2c2c;
+		font-size: 12px;
+	}
+	.eclerx-safe {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.wp-block-eclerx-newsletter-new {
+		.eclerx-newsletter-label {
+			h2 {
+				font-weight: 700;
+				font-size: 32px;
+				line-height: 40px;
+				margin-bottom: 28px;
+			}
+			p {
+				font-weight: 700;
+				font-size: 18px;
+				line-height: 26px;
+				margin-bottom: 18px;
+			}
+		}
+		input {
+			padding: 0 16px;
+			font-size: 16px;
+			letter-spacing: 0;
+			font-weight: 400;
+			margin-bottom: 18px;
+		}
+		button {
+			padding: 0 25px;
+			font-weight: 700;
+			font-size: 16px;
+		}
+	}
+}
+
+@media screen and (max-width: 640px) {
+	.wp-block-eclerx-newsletter-new {
+		.eclerx-newsletter-wrapper {
+			.eclerx-column {
+				width: 100%;
+			}
+		}
+		.eclerx-newsletter-label {
+			h2 {
+				font-weight: 700;
+				font-size: 24px;
+				line-height: 34px;
+				margin-bottom: 18px;
+				text-align: center;
+			}
+			p {
+				font-weight: 700;
+				font-size: 16px;
+				line-height: 24px;
+				margin-bottom: 18px;
+				letter-spacing: 0;
+				text-align: center;
+			}
+		}
+		.eclerx-row {
+			flex-direction: column;
+		}
+		.eclerx-column-half {
+			width: 100%;
+		}
+		.eclerx-newsletter-input-wrapper {
+			padding: 0;
+		}
+		input {
+			padding: 0 16px;
+			font-size: 16px;
+			letter-spacing: 0;
+			font-weight: 400;
+			margin-bottom: 5px;
+		}
+		button {
+			padding: 0 25px;
+			width: 100%;
+			font-weight: 700;
+			font-size: 16px;
+		}
+	}
+}

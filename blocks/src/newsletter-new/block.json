@@ -1,0 +1,67 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "eclerx/newsletter-new",
+	"version": "1.0.0",
+	"title": "Newsletter",
+	"category": "eclerx",
+	"icon": "email-alt2",
+	"description": "This block allows you to create subscribtion form for latest news. This block only works on single post/page.",
+	"example": {},
+	"supports": {
+		"html": false,
+		"align": ["wide", "full"],
+		"color": {
+			"text": true,
+			"background": true,
+			"link": true,
+			"gradients": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"textAlign": true
+		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"radius": true,
+				"style": true,
+				"width": true
+			}
+		}
+	},
+	"attributes": {
+		"title": {
+			"type": "string",
+			"source": "html",
+            "selector": ".eclerx-title",
+			"default": "Sign up to the Penguin Newsletter"
+		},
+		"description": {
+			"type": "string",
+			"source": "html",
+            "selector": ".eclerx-description",
+			"default": "For the latest books, recommendations, author interviews and more"
+		},
+		"caption": {
+			"type": "string",
+			"source": "html",
+            "selector": ".eclerx-caption",
+			"default": "By signing up, I confirm that I'm over 16. To find out what personal data we collect and how we use it, please visit our Privacy Policy"
+		}
+	},
+	"textdomain": "newsletter",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript":["file:./view.js", "eclerx-api"]
+}
