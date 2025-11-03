@@ -1,9 +1,16 @@
 import { __ } from "@wordpress/i18n";
 import {
 	useBlockProps,
+	InspectorControls,
 	RichText,
+	MediaUpload,
+	MediaUploadCheck,
 } from "@wordpress/block-editor";
+import { Panel, PanelBody, Button } from "@wordpress/components";
+import { Fragment } from "@wordpress/element";
 import image from "./eclerx-image.png";
+
+import './editor.scss';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -16,8 +23,54 @@ import image from "./eclerx-image.png";
 export default function Edit(props) {
 	const { attributes, setAttributes } = props;
 
+	const clearImage = (e) => {
+		e.preventDefault();
+		setAttributes({ featuredImageUrl: "#" });
+	}
+
 	return (
 		<div {...useBlockProps()}>
+			<InspectorControls key="setting">
+				<Panel>
+					<PanelBody
+						title={__("eClerx Newsletter Settings", "eclerx")}
+						initialOpen={true}
+					>
+						<fieldset>
+							<label className="inspector-control-label">
+								{__("Select Featured Image", "eclerx")}
+							</label>
+							<MediaUploadCheck>
+								<MediaUpload
+									onSelect={(image) => {
+										setAttributes({ featuredImageUrl: image.url });
+									}}
+									allowedTypes="image"
+									value={attributes.featuredImageUrl}
+									render={({ open }) => (
+										<Fragment>
+											{"#" !== attributes.featuredImageUrl ? (
+												<Fragment>
+												<img
+													onClick={open}
+													src={attributes.featuredImageUrl}
+													className="eclerx-image-control"
+												/>
+												<a className="clear-image-link" onClick={clearImage}>{__("Set to default image", "eclerx")}</a>
+												</Fragment>
+											) : (
+												<Button onClick={open} variant="secondary" isLarge>
+													{__("Select or Upload Image", "eclerx")}
+												</Button>
+											)}
+										</Fragment>
+									)}
+								/>
+							</MediaUploadCheck>
+						</fieldset>
+					</PanelBody>
+				</Panel>
+			</InspectorControls>
 			<div className="eclerx-newsletter-wrapper">
 				<div className="eclerx-column">
 					<div className="eclerx-newsletter-label">
@@ -88,7 +141,16 @@ export default function Edit(props) {
 					</div>
 				</div>
 				<div className="eclerx-column">
-					<img className="featured-image" src={image} alt={__("featured image", "eclerx")}/>
+					<img
+						className="featured-image"
+						src={
+							attributes.featuredImageUrl &&
+							attributes.featuredImageUrl.trim() !== "#"
+								? attributes.featuredImageUrl
+								: image
+						}
+						alt={__("featured image", "eclerx")}
+					/>
 				</div>
 			</div>
 		</div>

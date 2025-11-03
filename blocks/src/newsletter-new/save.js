@@ -115,7 +115,12 @@ export default function save(props) {
 				<div className="eclerx-column">
 					<img
 						className="featured-image"
-						src={image}
+						src={
+							attributes.featuredImageUrl &&
+							attributes.featuredImageUrl.trim() !== "#"
+								? attributes.featuredImageUrl
+								: image
+						}
 						alt={__("featured image", "eclerx")}
 					/>
 				</div>
